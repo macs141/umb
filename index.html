@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMB Online Banking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+        }
+        
+        .umb-logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #003087;
+            letter-spacing: -2px;
+        }
+        
+        .nav-green {
+            height: 6px;
+            background: linear-gradient(to right, #006400, #00cc00);
+        }
+        
+        input:focus {
+            border-color: #003087;
+            box-shadow: 0 0 0 3px rgba(0, 48, 135, 0.2);
+        }
+        
+        .sign-in-btn {
+            background-color: #003087;
+            transition: all 0.3s;
+        }
+        
+        .sign-in-btn:hover {
+            background-color: #002266;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-[420px] bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200">
+        <!-- Header -->
+        <div class="flex items-center justify-between px-6 py-4 border-b">
+            <div class="flex items-center gap-1">
+                <span class="umb-logo">UMB</span>
+            </div>
+            <button class="text-3xl text-gray-700">☰</button>
+        </div>
+        
+        <div class="nav-green"></div>
+        
+        <div class="p-6">
+            <h2 class="text-2xl font-semibold text-[#003087] mb-1">Enter Password</h2>
+            <p class="text-gray-600 mb-6">
+                User ID: <strong>williams007</strong>
+            </p>
+            
+            <!-- Password Field -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                <input 
+                    id="password"
+                    type="password" 
+                    placeholder="Enter your password"
+                    class="w-full px-4 py-4 border border-gray-300 rounded-lg text-lg focus:outline-none">
+            </div>
+            
+            <div class="flex items-center justify-between text-sm mb-6">
+                <a href="#" class="text-[#003087] hover:underline">Forgot Password?</a>
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" class="w-4 h-4 accent-[#003087]">
+                    <span>Remember me</span>
+                </label>
+            </div>
+            
+            <!-- Sign In Button -->
+            <button onclick="handleSignIn()" 
+                    class="sign-in-btn w-full text-white py-4 rounded-lg text-xl font-bold tracking-wider">
+                SIGN IN
+            </button>
+            
+            <div class="mt-8 text-center">
+                <a href="index.html" class="text-[#003087] hover:underline text-sm font-medium">
+                    ← Back to User ID
+                </a>
+            </div>
+        </div>
+        
+        <!-- Other Services Section -->
+        <div class="bg-[#f1f5f9] p-6 border-t">
+            <h3 class="text-lg font-semibold text-gray-700 mb-4">Login to other services</h3>
+            
+            <div class="flex border-b border-gray-300 mb-4">
+                <button onclick="switchTab(0)" id="personal-tab"
+                        class="flex-1 pb-3 text-center font-bold text-[#003087] border-b-4 border-[#003087]">
+                    PERSONAL
+                </button>
+                <button onclick="switchTab(1)" id="business-tab"
+                        class="flex-1 pb-3 text-center font-bold text-gray-500">
+                    BUSINESS
+                </button>
+            </div>
+            
+            <div class="space-y-4 text-[#003087]">
+                <div class="flex items-center gap-3">
+                    <div class="w-6 h-6 bg-white border border-gray-400 rounded flex items-center justify-center text-xs font-bold">🔒</div>
+                    <span class="font-medium">Online Banking</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="font-medium">HSA/Flex Accounts</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="font-medium">CardCenter Direct</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="font-medium">Brokerage</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="bg-[#003087] text-white text-xs py-2 px-4 flex items-center justify-between">
+            <span>Give Feedback</span>
+            <span class="text-2xl rotate-180">↗</span>
+        </div>
+    </div>
+
+    <script>
+        function handleSignIn() {
+            const password = document.getElementById('password').value.trim();
+            
+            if (password === "") {
+                alert("Please enter your password to continue.");
+            } else {
+                alert("Login successful. Welcome to UMB Online Banking. (This is a demo)");
+                // You can redirect to a dashboard here in the future:
+                // window.location.href = "dashboard.html";
+            }
+        }
+        
+        function switchTab(n) {
+            if (n === 0) {
+                document.getElementById('personal-tab').classList.add('border-b-4', 'border-[#003087]', 'text-[#003087]');
+                document.getElementById('personal-tab').classList.remove('text-gray-500');
+                document.getElementById('business-tab').classList.remove('border-b-4', 'border-[#003087]', 'text-[#003087]');
+                document.getElementById('business-tab').classList.add('text-gray-500');
+            } else {
+                document.getElementById('business-tab').classList.add('border-b-4', 'border-[#003087]', 'text-[#003087]');
+                document.getElementById('business-tab').classList.remove('text-gray-500');
+                document.getElementById('personal-tab').classList.remove('border-b-4', 'border-[#003087]', 'text-[#003087]');
+                document.getElementById('personal-tab').classList.add('text-gray-500');
+            }
+        }
+        
+        // Auto focus on password field
+        setTimeout(() => {
+            document.getElementById('password').focus();
+        }, 600);
+    </script>
+</body>
+</html>
