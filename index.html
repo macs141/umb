@@ -30,12 +30,12 @@
             box-shadow: 0 0 0 3px rgba(0, 48, 135, 0.2);
         }
         
-        .sign-in-btn {
+        .next-btn {
             background-color: #003087;
             transition: all 0.3s;
         }
         
-        .sign-in-btn:hover {
+        .next-btn:hover {
             background-color: #002266;
             transform: translateY(-2px);
         }
@@ -54,44 +54,37 @@
         <div class="nav-green"></div>
         
         <div class="p-6">
-            <h2 class="text-2xl font-semibold text-[#003087] mb-1">Enter Password</h2>
-            <p class="text-gray-600 mb-6">
-                User ID: <strong>williams007</strong>
-            </p>
+            <h2 class="text-2xl font-semibold text-[#003087] mb-6">
+                Log in to <span class="font-bold">Online Banking:</span>
+            </h2>
             
-            <!-- Password Field -->
-            <div class="mb-6">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+            <div class="mb-4">
                 <input 
-                    id="password"
-                    type="password" 
-                    placeholder="Enter your password"
+                    id="userId"
+                    type="text" 
+                    placeholder="User ID"
                     class="w-full px-4 py-4 border border-gray-300 rounded-lg text-lg focus:outline-none">
             </div>
             
-            <div class="flex items-center justify-between text-sm mb-6">
-                <a href="#" class="text-[#003087] hover:underline">Forgot Password?</a>
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" class="w-4 h-4 accent-[#003087]">
-                    <span>Remember me</span>
-                </label>
-            </div>
+            <a href="#" class="text-[#003087] hover:underline text-sm font-medium block mb-6">
+                Forgot User ID?
+            </a>
             
-            <!-- Sign In Button -->
-            <button onclick="handleSignIn()" 
-                    class="sign-in-btn w-full text-white py-4 rounded-lg text-xl font-bold tracking-wider">
-                SIGN IN
+            <button onclick="handleNext()" 
+                    class="next-btn w-full text-white py-4 rounded-lg text-xl font-bold tracking-wider">
+                NEXT
             </button>
             
-            <div class="mt-8 text-center">
-                <a href="index.html" class="text-[#003087] hover:underline text-sm font-medium">
-                    ← Back to User ID
-                </a>
+            <div class="mt-8 flex items-center gap-3">
+                <div class="w-1.5 h-10 bg-[#003087]"></div>
+                <div>
+                    <p class="text-[#003087] text-lg font-medium">New User? <a href="#" class="underline">Enroll</a></p>
+                    <p class="text-sm text-gray-500">Security and Privacy</p>
+                </div>
             </div>
         </div>
         
-        <!-- Other Services Section -->
-        <div class="bg-[#f1f5f9] p-6 border-t">
+        <div class="bg-[#f1f5f9] p-6">
             <h3 class="text-lg font-semibold text-gray-700 mb-4">Login to other services</h3>
             
             <div class="flex border-b border-gray-300 mb-4">
@@ -119,10 +112,15 @@
                 <div class="flex items-center gap-3">
                     <span class="font-medium">Brokerage</span>
                 </div>
+                <div class="flex items-center gap-3">
+                    <span class="font-medium">UMB 360Direct</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="font-medium">Total Wealth</span>
+                </div>
             </div>
         </div>
         
-        <!-- Footer -->
         <div class="bg-[#003087] text-white text-xs py-2 px-4 flex items-center justify-between">
             <span>Give Feedback</span>
             <span class="text-2xl rotate-180">↗</span>
@@ -130,15 +128,15 @@
     </div>
 
     <script>
-        function handleSignIn() {
-            const password = document.getElementById('password').value.trim();
+        function handleNext() {
+            const userId = document.getElementById('userId').value.trim();
             
-            if (password === "") {
-                alert("Please enter your password to continue.");
+            if (userId.toLowerCase() === "williams007") {
+                window.location.href = "password.html";
+            } else if (userId === "") {
+                alert("Please enter your User ID to continue.");
             } else {
-                alert("Login successful. Welcome to UMB Online Banking. (server100)");
-                // You can redirect to a dashboard here in the future:
-                // window.location.href = "dashboard.html";
+                alert("Invalid User ID. Please try again.");
             }
         }
         
@@ -156,10 +154,10 @@
             }
         }
         
-        // Auto focus on password field
+        // Auto focus
         setTimeout(() => {
-            document.getElementById('password').focus();
-        }, 600);
+            document.getElementById('userId').focus();
+        }, 500);
     </script>
 </body>
 </html>
