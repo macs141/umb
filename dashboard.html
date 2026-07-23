@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMB Online Banking - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .umb-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #003087;
+        }
+        
+        .dashboard-card {
+            transition: transform 0.2s;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .transaction-row {
+            transition: background-color 0.2s;
+        }
+        
+        .transaction-row:hover {
+            background-color: #f8fafc;
+        }
+        
+        .ad-card {
+            transition: all 0.3s;
+        }
+        
+        .ad-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .nav-active {
+            border-bottom: 3px solid #003087;
+            color: #003087;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-8">
+                    <div class="flex items-center gap-3">
+                        <span class="umb-logo">UMB</span>
+                        <span class="text-xl font-semibold text-gray-700">Online Banking</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center gap-6 text-sm">
+                        <a href="#" class="nav-active px-4 py-1">Dashboard</a>
+                        <a href="#" class="text-gray-600 hover:text-gray-900 px-4 py-1">Accounts</a>
+                        <a href="#" class="text-gray-600 hover:text-gray-900 px-4 py-1">Transfers</a>
+                        <a href="#" class="text-gray-600 hover:text-gray-900 px-4 py-1">Payments</a>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="text-right">
+                            <p class="font-semibold text-gray-800">Ellen Kay Williams</p>
+                            <p class="text-xs text-gray-500">Member since 1998</p>
+                        </div>
+                        <div class="w-10 h-10 bg-[#003087] rounded-full flex items-center justify-center text-white font-bold">
+                            EW
+                        </div>
+                    </div>
+                    
+                    <button onclick="logout()" 
+                            class="px-5 py-2 text-sm bg-red-600 hover:bg-red-700 text-white rounded-lg transition flex items-center gap-2">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Log Out</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 py-8">
+        
+        <!-- Welcome Banner -->
+        <div class="bg-gradient-to-r from-[#003087] to-[#0047ab] text-white rounded-2xl p-8 mb-8 shadow-lg">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold mb-1">Welcome back, Ellen!</h1>
+                    <p class="text-blue-100">Last login: Today at 9:12 PM</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-xl inline-flex items-center gap-3">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                        <div>
+                            <p class="text-sm">Account Status</p>
+                            <p class="font-semibold">Secure & Verified</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Account Summary -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-2xl shadow p-8 mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-800">Account Summary</h2>
+                            <p class="text-sm text-gray-500">Primary Checking Account • ****4521</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-gray-500">Available Balance</p>
+                            <p class="text-4xl font-bold text-[#003087]">$99,500.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="text-sm text-gray-500">Total Deposits (This Month)</p>
+                            <p class="text-xl font-semibold text-green-600">+$99,735.00</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="text-sm text-gray-500">Total Withdrawals</p>
+                            <p class="text-xl font-semibold text-red-600">-$235.00</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="text-sm text-gray-500">Pending Transactions</p>
+                            <p class="text-xl font-semibold">2</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="text-sm text-gray-500">Available Credit</p>
+                            <p class="text-xl font-semibold">$25,000.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="bg-white rounded-2xl shadow p-8">
+                    <h2 class="text-xl font-bold text-gray-800 mb-6">Personal Information</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                        <div>
+                            <p class="text-sm text-gray-500">Full Name</p>
+                            <p class="font-semibold text-lg">Ellen Kay Williams</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Date of Birth</p>
+                            <p class="font-semibold text-lg">September 24, 1941</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Mailing Address</p>
+                            <p class="font-semibold">19 Canongate Ln<br>Highlands Ranch, CO 80130</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Social Security Number</p>
+                            <p class="font-semibold text-lg">***-**-8639</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Primary Bank</p>
+                            <p class="font-semibold text-lg">UMB Bank</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Member Since</p>
+                            <p class="font-semibold text-lg">March 12, 1998</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-white rounded-2xl shadow p-8 h-fit">
+                <h2 class="text-xl font-bold text-gray-800 mb-6">Quick Actions</h2>
+                
+                <div class="space-y-3">
+                    <button class="w-full flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition">
+                        <i class="fas fa-exchange-alt text-2xl text-[#003087]"></i>
+                        <div class="text-left">
+                            <p class="font-semibold">Transfer Money</p>
+                            <p class="text-xs text-gray-500">Between accounts or external</p>
+                        </div>
+                    </button>
+                    
+                    <button class="w-full flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition">
+                        <i class="fas fa-file-invoice-dollar text-2xl text-[#003087]"></i>
+                        <div class="text-left">
+                            <p class="font-semibold">Pay Bills</p>
+                            <p class="text-xs text-gray-500">Schedule or one-time payments</p>
+                        </div>
+                    </button>
+                    
+                    <button class="w-full flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition">
+                        <i class="fas fa-mobile-alt text-2xl text-[#003087]"></i>
+                        <div class="text-left">
+                            <p class="font-semibold">Mobile Deposit</p>
+                            <p class="text-xs text-gray-500">Deposit checks instantly</p>
+                        </div>
+                    </button>
+                    
+                    <button class="w-full flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition">
+                        <i class="fas fa-download text-2xl text-[#003087]"></i>
+                        <div class="text-left">
+                            <p class="font-semibold">Download Statement</p>
+                            <p class="text-xs text-gray-500">January 2026 Statement</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="bg-white rounded-2xl shadow mt-8 p-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold text-gray-800">Recent Transactions</h2>
+                <a href="#" class="text-sm text-[#003087] hover:underline font-medium">View All Transactions →</a>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b text-left text-sm text-gray-500">
+                            <th class="pb-4 font-medium">Date</th>
+                            <th class="pb-4 font-medium">Description</th>
+                            <th class="pb-4 font-medium text-right">Amount</th>
+                            <th class="pb-4 font-medium text-right">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="transaction-row border-b">
+                            <td class="py-4">Jan 22, 2026</td>
+                            <td class="py-4 font-medium">USPS Reimbursement</td>
+                            <td class="py-4 text-right font-semibold text-green-600">+$35.00</td>
+                            <td class="py-4 text-right"><span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">Completed</span></td>
+                        </tr>
+                        <tr class="transaction-row border-b">
+                            <td class="py-4">Jan 20, 2026</td>
+                            <td class="py-4 font-medium">Gas Reimbursement - Shell</td>
+                            <td class="py-4 text-right font-semibold text-green-600">+$200.00</td>
+                            <td class="py-4 text-right"><span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">Completed</span></td>
+                        </tr>
+                        <tr class="transaction-row border-b">
+                            <td class="py-4">Jan 18, 2026</td>
+                            <td class="py-4 font-medium">Cashier's Check Deposit</td>
+                            <td class="py-4 text-right font-semibold text-green-600">+$75,000.00</td>
+                            <td class="py-4 text-right"><span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">Completed</span></td>
+                        </tr>
+                        <tr class="transaction-row">
+                            <td class="py-4">Jan 15, 2026</td>
+                            <td class="py-4 font-medium">Wire Transfer Received</td>
+                            <td class="py-4 text-right font-semibold text-green-600">+$24,500.00</td>
+                            <td class="py-4 text-right"><span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">Completed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Advertisements / Promotions -->
+        <div class="mt-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold text-gray-800">Recommended for You</h2>
+                <span class="text-sm text-gray-500">Sponsored by UMB Bank</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                
+                <!-- Ad 1 -->
+                <div class="ad-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-credit-card text-3xl text-[#003087]"></i>
+                        <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full">New Offer</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">UMB Visa Signature Card</h3>
+                    <p class="text-sm text-gray-600 mb-4">Earn 3% cash back on all purchases. No annual fee for first year.</p>
+                    <button class="text-sm font-semibold text-[#003087] hover:underline">Apply Now →</button>
+                </div>
+                
+                <!-- Ad 2 -->
+                <div class="ad-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-home text-3xl text-[#003087]"></i>
+                        <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full">Popular</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">Home Equity Line of Credit</h3>
+                    <p class="text-sm text-gray-600 mb-4">Low rates starting at 7.49% APR. Use for home improvements or major expenses.</p>
+                    <button class="text-sm font-semibold text-[#003087] hover:underline">Learn More →</button>
+                </div>
+                
+                <!-- Ad 3 -->
+                <div class="ad-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-piggy-bank text-3xl text-[#003087]"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">High-Yield Savings Account</h3>
+                    <p class="text-sm text-gray-600 mb-4">Earn up to 4.85% APY. FDIC insured. Open in minutes.</p>
+                    <button class="text-sm font-semibold text-[#003087] hover:underline">Open Account →</button>
+                </div>
+                
+                <!-- Ad 4 -->
+                <div class="ad-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-chart-line text-3xl text-[#003087]"></i>
+                        <span class="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full">Limited Time</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">Retirement Planning</h3>
+                    <p class="text-sm text-gray-600 mb-4">Schedule a free consultation with our wealth advisors today.</p>
+                    <button class="text-sm font-semibold text-[#003087] hover:underline">Book Now →</button>
+                </div>
+                
+                <!-- Ad 5 -->
+                <div class="ad-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-mobile-alt text-3xl text-[#003087]"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">UMB Mobile Banking App</h3>
+                    <p class="text-sm text-gray-600 mb-4">Deposit checks, pay bills, and manage accounts on the go. Download today.</p>
+                    <button class="text-sm font-semibold text-[#003087] hover:underline">Get the App →</button>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        function logout() {
+            if (confirm("Are you sure you want to log out?")) {
+                window.location.href = "index.html";
+            }
+        }
+        
+        // Keyboard shortcut hint (optional)
+        console.log("%c[Demo] Dashboard loaded successfully for Ellen Kay Williams", "color: #003087");
+    </script>
+</body>
+</html>
